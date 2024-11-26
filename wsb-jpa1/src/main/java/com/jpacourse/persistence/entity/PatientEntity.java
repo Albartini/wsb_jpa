@@ -1,13 +1,9 @@
 package com.jpacourse.persistence.entity;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "PATIENT")
@@ -33,6 +29,17 @@ public class PatientEntity {
 
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
+
+	@OneToOne(
+			cascade = CascadeType.REMOVE,
+			fetch = FetchType.LAZY) //relacja jednostronna od parenta
+	private AddressEntity address;
+
+	@OneToMany(
+			cascade = CascadeType.REFRESH,
+			fetch = FetchType.LAZY) //relacja jednostronna od dziecka
+	@JoinColumn(name = "PATIENT_ID")
+	private Collection<VisitEntity> visits;
 
 	public Long getId() {
 		return id;

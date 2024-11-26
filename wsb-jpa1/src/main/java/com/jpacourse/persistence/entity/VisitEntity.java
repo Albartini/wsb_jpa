@@ -1,13 +1,9 @@
 package com.jpacourse.persistence.entity;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "VISIT")
@@ -21,6 +17,9 @@ public class VisitEntity {
 
 	@Column(nullable = false)
 	private LocalDateTime time;
+
+	@OneToMany(mappedBy = "visit") //relacja dwustronna
+	private Collection<MedicalTreatmentEntity> treatments;
 
 	public Long getId() {
 		return id;

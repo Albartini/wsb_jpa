@@ -25,6 +25,6 @@ public class AddressController
         {
             return address;
         }
-        throw new EntityNotFoundException(id);
+        throw new EntityNotFoundException(id.toString());
     }
 }

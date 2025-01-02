@@ -1,8 +1,12 @@
 package com.jpacourse.persistence.enums;
 
 public enum TreatmentType {
-
 	USG,
 	EKG,
-	RTG
+	RTG,
+	LAB,
+	IMAGING,
+	REHABILITATION,
+	ONCOLOGY,
+	SURGICAL
 }

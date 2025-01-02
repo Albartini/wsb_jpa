@@ -21,6 +21,14 @@ public class VisitEntity {
 	@OneToMany(mappedBy = "visit") //relacja dwustronna
 	private Collection<MedicalTreatmentEntity> treatments;
 
+	public void setTreatments(Collection<MedicalTreatmentEntity> treatments) {
+		this.treatments = treatments;
+	}
+
+	public Collection<MedicalTreatmentEntity> getTreatments() {
+        return treatments;
+    }
+
 	public Long getId() {
 		return id;
 	}

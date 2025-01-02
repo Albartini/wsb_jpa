@@ -1,5 +1,7 @@
 package com.jpacourse.persistence.entity;
 
+import com.jpacourse.persistence.enums.Gender;
+
 import java.time.LocalDate;
 import java.util.Collection;
 
@@ -12,6 +14,10 @@ public class PatientEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private Gender gender;
 
 	@Column(nullable = false)
 	private String firstName;
@@ -36,8 +42,9 @@ public class PatientEntity {
 	private AddressEntity address;
 
 	@OneToMany(
-			cascade = CascadeType.REFRESH,
-			fetch = FetchType.LAZY) //relacja jednostronna od dziecka
+			cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY,
+			orphanRemoval = true) //relacja jednostronna od dziecka
 	@JoinColumn(name = "PATIENT_ID")
 	private Collection<VisitEntity> visits;
 
@@ -47,6 +54,14 @@ public class PatientEntity {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
 
 	public String getFirstName() {
@@ -97,4 +112,19 @@ public class PatientEntity {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	public void setAddress(AddressEntity address) {
+		this.address = address;
+	}
+
+	public Collection<VisitEntity> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(Collection<VisitEntity> visits) {
+		this.visits = visits;
+	}
 }

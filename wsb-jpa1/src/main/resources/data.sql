@@ -35,29 +35,29 @@ VALUES (1, 'New York', '123 Main St', 'Apt 4B', '10001'),
 
 -- Insert sample data into Doctor table
 INSERT INTO Doctor (id, firstName, lastName, telephoneNumber, email, doctorNumber, specialization, Address_id)
-VALUES (1, 'John', 'Doe', '555-1234', 'johndoe@example.com', 'D001', 'Cardiology', 1),
-       (2, 'Jane', 'Smith', '555-5678', 'janesmith@example.com', 'D002', 'Neurology', 2),
-       (3, 'Emily', 'Davis', '555-2345', 'emilydavis@example.com', 'D003', 'Pediatrics', 3),
-       (4, 'Michael', 'Wilson', '555-3456', 'michaelwilson@example.com', 'D004', 'Orthopedics', 4),
-       (5, 'Sarah', 'Taylor', '555-4567', 'sarahtaylor@example.com', 'D005', 'Dermatology', 5),
-       (6, 'David', 'Anderson', '555-5678', 'davidanderson@example.com', 'D006', 'Ophthalmology', 6),
-       (7, 'Laura', 'Thomas', '555-6789', 'laurathomas@example.com', 'D007', 'Gynecology', 7),
-       (8, 'James', 'Martinez', '555-7890', 'jamesmartinez@example.com', 'D008', 'Oncology', 8),
-       (9, 'Linda', 'Hernandez', '555-8901', 'lindahernandez@example.com', 'D009', 'Psychiatry', 9),
-       (10, 'Robert', 'Moore', '555-9012', 'robertmoore@example.com', 'D010', 'Radiology', 10);
+VALUES (1, 'John', 'Doe', '555-1234', 'johndoe@example.com', 'D001', 'CARDIOLOGY', 1),
+      (2, 'Jane', 'Smith', '555-5678', 'janesmith@example.com', 'D002', 'NEUROLOGY', 2),
+      (3, 'Emily', 'Davis', '555-2345', 'emilydavis@example.com', 'D003', 'PEDIATRICS', 3),
+      (4, 'Michael', 'Wilson', '555-3456', 'michaelwilson@example.com', 'D004', 'ORTHOPEDICS', 4),
+      (5, 'Sarah', 'Taylor', '555-4567', 'sarahtaylor@example.com', 'D005', 'DERMATOLOGY', 5),
+      (6, 'David', 'Anderson', '555-5678', 'davidanderson@example.com', 'D006', 'OPHTHALMOLOGY', 6),
+      (7, 'Laura', 'Thomas', '555-6789', 'laurathomas@example.com', 'D007', 'GYNECOLOGY', 7),
+      (8, 'James', 'Martinez', '555-7890', 'jamesmartinez@example.com', 'D008', 'ONCOLOGY', 8),
+      (9, 'Linda', 'Hernandez', '555-8901', 'lindahernandez@example.com', 'D009', 'PSYCHIATRY', 9),
+      (10, 'Robert', 'Moore', '555-9012', 'robertmoore@example.com', 'D010', 'RADIOLOGY', 10);
 
 -- Insert sample data into Patient table
-INSERT INTO Patient (id, firstName, lastName, telephoneNumber, email, patientNumber, dateOfBirth, Address_id)
-VALUES (1, 'Alice', 'Brown', '555-8765', 'alicebrown@example.com', 'P001', '1980-05-15', 11),
-       (2, 'Bob', 'Johnson', '555-4321', 'bobjohnson@example.com', 'P002', '1975-09-20', 12),
-       (3, 'Charlie', 'Green', '555-5432', 'charliegreen@example.com', 'P003', '1990-01-10', 13),
-       (4, 'Diana', 'King', '555-6543', 'dianaking@example.com', 'P004', '1985-02-20', 14),
-       (5, 'Edward', 'Scott', '555-7654', 'edwardscott@example.com', 'P005', '1970-03-30', 15),
-       (6, 'Fiona', 'Adams', '555-8765', 'fionaadams@example.com', 'P006', '1995-04-15', 16),
-       (7, 'George', 'Baker', '555-9876', 'georgebaker@example.com', 'P007', '1988-05-25', 17),
-       (8, 'Hannah', 'Carter', '555-0987', 'hannahcarter@example.com', 'P008', '1992-06-05', 18),
-       (9, 'Ian', 'Evans', '555-1098', 'ianevans@example.com', 'P009', '1983-07-15', 19),
-       (10, 'Julia', 'Foster', '555-2109', 'juliafoster@example.com', 'P010', '1977-08-25', 20);
+INSERT INTO Patient (id, gender, firstName, lastName, telephoneNumber, email, patientNumber, dateOfBirth, Address_id)
+VALUES (1, 'FEMALE', 'Alice', 'Brown', '555-8765', 'alicebrown@example.com', 'P001', '1980-05-15', 11),
+        (2, 'MALE', 'Bob', 'Johnson', '555-4321', 'bobjohnson@example.com', 'P002', '1975-09-20', 12),
+        (3, 'MALE', 'Charlie', 'Green', '555-5432', 'charliegreen@example.com', 'P003', '1990-01-10', 13),
+        (4, 'FEMALE', 'Diana', 'King', '555-6543', 'dianaking@example.com', 'P004', '1985-02-20', 14),
+        (5, 'MALE', 'Edward', 'Scott', '555-7654', 'edwardscott@example.com', 'P005', '1970-03-30', 15),
+        (6, 'FEMALE', 'Fiona', 'Adams', '555-8765', 'fionaadams@example.com', 'P006', '1995-04-15', 16),
+        (7, 'MALE', 'George', 'Baker', '555-9876', 'georgebaker@example.com', 'P007', '1988-05-25', 17),
+        (8, 'FEMALE', 'Hannah', 'Carter', '555-0987', 'hannahcarter@example.com', 'P008', '1992-06-05', 18),
+        (9, 'MALE', 'Ian', 'Evans', '555-1098', 'ianevans@example.com', 'P009', '1983-07-15', 19),
+        (10, 'FEMALE', 'Julia', 'Foster', '555-2109', 'juliafoster@example.com', 'P010', '1977-08-25', 20);
 
 -- Insert sample data into Visit table
 INSERT INTO Visit (id, description, time, Doctor_id, Patient_id)
@@ -74,13 +74,13 @@ VALUES (1, 'Routine Checkup', '2023-10-01 10:00:00', 1, 1),
 
 -- Insert sample data into MedicalTreatment table
 INSERT INTO MedicalTreatment (id, description, type, Visit_id)
-VALUES (1, 'Blood Test', 'Lab', 1),
-       (2, 'MRI Scan', 'Imaging', 2),
-       (3, 'X-Ray', 'Imaging', 3),
-       (4, 'Ultrasound', 'Imaging', 4),
-       (5, 'CT Scan', 'Imaging', 5),
-       (6, 'Physical Therapy', 'Rehabilitation', 6),
-       (7, 'Chemotherapy', 'Oncology', 7),
-       (8, 'Radiation Therapy', 'Oncology', 8),
-       (9, 'Surgery', 'Surgical', 9),
-       (10, 'Blood Transfusion', 'Lab', 10);
+VALUES (1, 'Blood Test', 'LAB', 1),
+       (2, 'MRI Scan', 'IMAGING', 2),
+       (3, 'X-Ray', 'IMAGING', 3),
+       (4, 'Ultrasound', 'IMAGING', 4),
+       (5, 'CT Scan', 'IMAGING', 5),
+       (6, 'Physical Therapy', 'REHABILITATION', 6),
+       (7, 'Chemotherapy', 'ONCOLOGY', 7),
+       (8, 'Radiation Therapy', 'ONCOLOGY', 8),
+       (9, 'Surgery', 'SURGICAL', 9),
+       (10, 'Blood Transfusion', 'LAB', 10);

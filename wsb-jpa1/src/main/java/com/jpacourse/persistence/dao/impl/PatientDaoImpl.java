@@ -7,8 +7,11 @@ import com.jpacourse.persistence.entity.VisitEntity;
 import com.jpacourse.rest.exception.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 @Repository
@@ -37,6 +40,43 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         entityManager.merge(doctor);
 
         return entityManager.merge(patient);
+    }
+
+    @Override
+    public List<PatientEntity> findPatientsByLastName(String lastName) {
+        return entityManager.createQuery(" select pat from PatientEntity pat " +
+                " where pat.lastName = :lastName ", PatientEntity.class)
+                .setParameter("lastName", lastName)
+                .getResultList();
+    }
+
+    @Override
+    public List<VisitEntity> findPatientsVisits(long id) {
+        return entityManager.createQuery(" select v from PatientEntity pat " +
+                        " join pat.visits v " +
+                        " where pat.id = :id ", VisitEntity.class)
+                .setParameter("id", id)
+                .getResultList();
+    }
+
+    @Override
+    public List<PatientEntity> findPatientsWithNumberOfVisits(long numberOfVisits) {
+        return entityManager.createQuery(" select pat from PatientEntity pat " +
+                        " join pat.visits vis " +
+                        " group by pat " +
+                        " having count(vis) >= :num ", PatientEntity.class)
+                .setParameter("num", numberOfVisits)
+                .getResultList();
+    }
+
+    @Override
+    public List<PatientEntity> findPatientsOlderThan(int years) {
+        LocalDate date = LocalDate.now().minusYears(years);
+
+        return entityManager.createQuery(" select pat from PatientEntity pat " +
+                        " where pat.dateOfBirth <= :date ", PatientEntity.class)
+                .setParameter("date", date)
+                .getResultList();
     }
 
 }

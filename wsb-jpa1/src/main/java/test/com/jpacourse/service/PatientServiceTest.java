@@ -1,5 +1,6 @@
-package com.jpacourse.service;
+package test.com.jpacourse.service;
 
+import com.jpacourse.WsbJpaApplication;
 import com.jpacourse.dto.AddressTO;
 import com.jpacourse.dto.MedicalTreatmentTO;
 import com.jpacourse.dto.PatientTO;
@@ -9,6 +10,7 @@ import com.jpacourse.persistence.dao.DoctorDao;
 import com.jpacourse.persistence.dao.VisitDao;
 import com.jpacourse.persistence.entity.PatientEntity;
 import com.jpacourse.persistence.entity.DoctorEntity;
+import com.jpacourse.service.PatientService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = WsbJpaApplication.class)
 public class PatientServiceTest {
 
     @Autowired
@@ -143,5 +145,23 @@ public class PatientServiceTest {
 
         // then
         assertThat(patientTO).isNull();
+    }
+
+    @Test
+    @Transactional
+    public void testShouldFindVisitsOfExistingPatient() {
+        // given
+        long existingPatientId = 1L;
+        // when/then
+        assertThat(patientService.findPatientsVisits(existingPatientId).size()).isGreaterThan(0);
+    }
+
+    @Test
+    @Transactional
+    public void testShouldReturnEmptyCollectionWhenNoPatientsOlderThanFound() {
+        // given
+        long nonExistingPatientId = 1000L;
+        // when/then
+        assertThat(patientService.findPatientsVisits(nonExistingPatientId).size()).isEqualTo(0);
     }
 }

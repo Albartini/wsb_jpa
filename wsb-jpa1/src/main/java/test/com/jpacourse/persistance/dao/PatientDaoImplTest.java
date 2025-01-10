@@ -1,5 +1,6 @@
-package com.jpacourse.persistance.dao;
+package test.com.jpacourse.persistance.dao;
 
+import com.jpacourse.WsbJpaApplication;
 import com.jpacourse.persistence.dao.DoctorDao;
 import com.jpacourse.persistence.dao.PatientDao;
 import com.jpacourse.persistence.entity.DoctorEntity;
@@ -20,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = WsbJpaApplication.class)
 public class PatientDaoImplTest {
 
     @Autowired
@@ -77,16 +78,57 @@ public class PatientDaoImplTest {
 
     @Test
     @Transactional
-    public void testShouldThrowExceptionWhenDoctorNotFound() {
+    public void testShouldFindPatientsByLastName() {
         // given
-        Long patientId = 1L;
-        Long nonExistentDoctorId = 999L;
-        LocalDateTime visitDate = LocalDateTime.now().plusDays(1);
-        String description = "Regular checkup";
+        String patientLastName = "Green";
 
         // when/then
-        assertThatThrownBy(() ->
-                patientDao.addVisitToPatient(patientId, nonExistentDoctorId, visitDate, description)
-        ).isInstanceOf(EntityNotFoundException.class);
+        assertThat(patientDao.findPatientsByLastName(patientLastName).size()).isGreaterThan(0);
+    }
+
+    @Test
+    @Transactional
+    public void testShouldReturnEmptyCollectionWhenNoPatientsWithLastNameFound() {
+        // given
+        String patientLastName = "NoSuchLastName";
+
+        // when/then
+        assertThat(patientDao.findPatientsByLastName(patientLastName).size()).isEqualTo(0);
+    }
+
+    @Test
+    @Transactional
+    public void testShouldFindPatientsThatHadAnyVisit() {
+        // given
+        long numberOfVisits = 0;
+        // when/then
+        assertThat(patientDao.findPatientsWithNumberOfVisits(numberOfVisits).size()).isGreaterThan(0);
+    }
+
+    @Test
+    @Transactional
+    public void testShouldReturnEmptyCollectionWhenNoPatientsWithNumberOfVisitsFound() {
+        // given
+        long numberOfVisits = 30000;
+        // when/then
+        assertThat(patientDao.findPatientsWithNumberOfVisits(numberOfVisits).size()).isEqualTo(0);
+    }
+
+    @Test
+    @Transactional
+    public void testShouldFindPatientsThatAreOlderThan() {
+        // given
+        int numberOfYears = 20;
+        // when/then
+        assertThat(patientDao.findPatientsOlderThan(numberOfYears).size()).isGreaterThan(0);
+    }
+
+    @Test
+    @Transactional
+    public void testShouldReturnEmptyCollectionWhenNoPatientsOlderThanFound() {
+        // given
+        int numberOfYears = 300;
+        // when/then
+        assertThat(patientDao.findPatientsWithNumberOfVisits(numberOfYears).size()).isEqualTo(0);
     }
 }

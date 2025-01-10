@@ -34,17 +34,17 @@ VALUES (1, 'New York', '123 Main St', 'Apt 4B', '10001'),
        (20, 'Washington', '1717 Chestnut St', 'Suite 90', '20001');
 
 -- Insert sample data into Doctor table
-INSERT INTO Doctor (id, firstName, lastName, telephoneNumber, email, doctorNumber, specialization, Address_id)
-VALUES (1, 'John', 'Doe', '555-1234', 'johndoe@example.com', 'D001', 'CARDIOLOGY', 1),
-      (2, 'Jane', 'Smith', '555-5678', 'janesmith@example.com', 'D002', 'NEUROLOGY', 2),
-      (3, 'Emily', 'Davis', '555-2345', 'emilydavis@example.com', 'D003', 'PEDIATRICS', 3),
-      (4, 'Michael', 'Wilson', '555-3456', 'michaelwilson@example.com', 'D004', 'ORTHOPEDICS', 4),
-      (5, 'Sarah', 'Taylor', '555-4567', 'sarahtaylor@example.com', 'D005', 'DERMATOLOGY', 5),
-      (6, 'David', 'Anderson', '555-5678', 'davidanderson@example.com', 'D006', 'OPHTHALMOLOGY', 6),
-      (7, 'Laura', 'Thomas', '555-6789', 'laurathomas@example.com', 'D007', 'GYNECOLOGY', 7),
-      (8, 'James', 'Martinez', '555-7890', 'jamesmartinez@example.com', 'D008', 'ONCOLOGY', 8),
-      (9, 'Linda', 'Hernandez', '555-8901', 'lindahernandez@example.com', 'D009', 'PSYCHIATRY', 9),
-      (10, 'Robert', 'Moore', '555-9012', 'robertmoore@example.com', 'D010', 'RADIOLOGY', 10);
+INSERT INTO Doctor (id, firstName, lastName, telephoneNumber, email, doctorNumber, specialization, Address_id, version)
+VALUES (1, 'John', 'Doe', '555-1234', 'johndoe@example.com', 'D001', 'CARDIOLOGY', 1, 10),
+      (2, 'Jane', 'Smith', '555-5678', 'janesmith@example.com', 'D002', 'NEUROLOGY', 2, 9),
+      (3, 'Emily', 'Davis', '555-2345', 'emilydavis@example.com', 'D003', 'PEDIATRICS', 3, 8),
+      (4, 'Michael', 'Wilson', '555-3456', 'michaelwilson@example.com', 'D004', 'ORTHOPEDICS', 4, 7),
+      (5, 'Sarah', 'Taylor', '555-4567', 'sarahtaylor@example.com', 'D005', 'DERMATOLOGY', 5, 6),
+      (6, 'David', 'Anderson', '555-5678', 'davidanderson@example.com', 'D006', 'OPHTHALMOLOGY', 6, 5),
+      (7, 'Laura', 'Thomas', '555-6789', 'laurathomas@example.com', 'D007', 'GYNECOLOGY', 7, 4),
+      (8, 'James', 'Martinez', '555-7890', 'jamesmartinez@example.com', 'D008', 'ONCOLOGY', 8, 3),
+      (9, 'Linda', 'Hernandez', '555-8901', 'lindahernandez@example.com', 'D009', 'PSYCHIATRY', 9, 2),
+      (10, 'Robert', 'Moore', '555-9012', 'robertmoore@example.com', 'D010', 'RADIOLOGY', 10, 1);
 
 -- Insert sample data into Patient table
 INSERT INTO Patient (id, gender, firstName, lastName, telephoneNumber, email, patientNumber, dateOfBirth, Address_id)

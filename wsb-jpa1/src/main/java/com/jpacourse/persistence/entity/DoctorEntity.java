@@ -31,6 +31,9 @@ public class DoctorEntity {
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
 
+	@Version
+	private Long version;
+
 	@OneToOne(
 			cascade = CascadeType.REMOVE,
 			fetch = FetchType.LAZY)  //relacja jednostronna od parenta
@@ -112,6 +115,11 @@ public class DoctorEntity {
 
 	public void setVisits(Collection<VisitEntity> visits) {
 		this.visits = visits;
+	}
+
+	public Long getVersion() { return version; }
+	public void setVersion(Long version) {
+		this.version = version;
 	}
 
 }
